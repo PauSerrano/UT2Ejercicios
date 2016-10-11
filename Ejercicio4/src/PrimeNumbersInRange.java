@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 // Queremos calcular los números primos entre 2 números y imprimirlos por pantalla.
 //
@@ -26,10 +27,63 @@ import java.util.ArrayList;
 
 public class PrimeNumbersInRange {
 	// Ayuda: utiliza esta lista para guardarte la referencia a los threads que crees
-	private ArrayList<Thread> threads; 
+	private static ArrayList<Thread> threads; 
 
 	public static void main(String[] args) {
 		// COMPLETA AQUÍ EL EJERCICIO
+		Scanner sc = new Scanner (System.in);
+		int from, to, numHilos;
+		int id=0;
+		int numXhilo;
+		threads = new ArrayList<>();
+		Thread previous=null;
+		
+		System.out.println("Introduce 2 numeros");
+		from = sc.nextInt();
+		to = sc.nextInt();
+		System.out.println("Introduce el numeros de hilos");
+		numHilos= sc.nextInt();	
+		
+		numXhilo = (to-from)/numHilos;
+		Thread t=null;
+		
+		for (int i=0; i<numHilos;i++){
+		
+		id++;
+		from = numXhilo * i + 1;
+		to = from + numXhilo - 1;
+		
+		
+		Runnable r = new CalcPrimeNumbersRunnable (id, from, to, t);
+		t = new Thread (r);
+		
+		threads.add(t);
+		
+		}
+		
+		for (Thread tt:threads){
+			tt.start();
+			
+			
+
+			try {
+				tt.interrupt();
+				tt.join();
+				
+			} catch (InterruptedException e) {
+				System.out.println("El padre decide interumpir al hijo");
+				tt.toString();
+				
+			}
+			
+			
+		}
+		
+		
+		
+		
+		System.out.println("esperando al ultimo thread para finalizar");
+
 
 	}
 

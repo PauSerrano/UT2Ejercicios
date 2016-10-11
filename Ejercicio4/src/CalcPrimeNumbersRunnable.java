@@ -24,6 +24,13 @@ public class CalcPrimeNumbersRunnable implements Runnable {
 		System.out.println("El id del thread es: "+this.id);
 		for (Integer i:lista){
 			System.out.println(i);
+		
+			/*try {
+				Thread;
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}*/
 		}
 		//comentario
 	}
