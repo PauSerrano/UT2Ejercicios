@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 // Queremos calcular los números primos entre 2 números y imprimirlos por pantalla.
 //
 //Requisitos:
@@ -13,6 +15,29 @@ public class PrimeNumbersInRange {
 	public static void main(String[] args) {
 		// COMPLETA AQUÍ EL EJERCICIO
 
+		Scanner sc = new Scanner (System.in);
+		int from, to;
+		
+		System.out.println("Introduce 2 numeros");
+		from = sc.nextInt();
+		to = sc.nextInt();
+		
+		Runnable r = new CalcPrimeNumbersRunnable (from, to);
+		Thread t = new Thread (r);
+		t.start();
+		
+		try {
+			t.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println("Comprobando el orden de salida");
+		
+
+		
+		
 	}
 
 }
