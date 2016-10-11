@@ -40,7 +40,7 @@ Requisitos:
 
 Modificación el ejercicio 3 para que se pueda interrumpir el trabajo de los threads "workers" al cabo de un tiempo determinado si no se ha finalizado todavía.
 
-Requisitos:
+Requisitos:...
 
 * El thread principal debe poder cancelar el trabajo de los threads si se sobrepasa el límite de tiempo.
 * Para ello debes utilizar el método interrupt() sobre todos los threads que todavía estén vivos (con el método isAlive(), por ejemplo)
